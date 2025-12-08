@@ -2,6 +2,7 @@
 .PHONY: run build clean
 
 build:
+	mkdir -p out/objs
 	make -C out
 
 clean:
