@@ -5,6 +5,8 @@
 <b>QEMUクロスビルド環境の準備、TOPPERS/ASP3やFreeRTOSなどのMakefileベースのビルドシステムへの組み込み、Cコードとの連携<br>
 Cベースの既存プロジェクト・開発プラットフォームでRustを導入する方法を学ぶ</b>
 
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)][2]
+
 </div>
 
 > 既存システムにRustを導入する際は、部分的な移行から始めるのが現実的ですが、最初からRustで開発する場合とは異なる課題が伴います。そこで今回は、TOPPERS/ASP3アプリケーションをベースにRustコードを組み込む方法と、クロスコンパイルやFFIなどの必要な知識を学びます。
@@ -20,6 +22,13 @@ Cベースの既存プロジェクト・開発プラットフォームでRustを
     このディレクトリには、ビルド完了後のビルド生成物も格納されます。
 
 ## はじめに
+
+### 事前準備: GitHub Codespaces
+
+[GitHub Codespaces](https://github.com/codespaces)を利用するとブラウザ上でLinuxベースの開発環境をすぐに準備できます。
+2022年から[無料枠][1]が追加されました。
+
+[**こちらのリンクからセットアップ済みのCodespaceを作成できます。**][2]
 
 ### 事前準備: Ubuntu
 
@@ -42,3 +51,6 @@ $ make run
 ## 便利なリンク
 
 - [TOPPERS/ASP3をQEMUで動作させ](https://qiita.com/exshonda/items/bab3921161919feaba6f) - Ubuntu 22.04 LTS上でTOPPERS/ASP3アプリケーションをビルド・実行するための詳細な手順が記載されています。
+
+[1]: https://github.blog/changelog/2022-11-09-codespaces-for-free-and-pro-accounts/
+[2]: https://codespaces.new/ycst2025/part-2?quickstart=1
