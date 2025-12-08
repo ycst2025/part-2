@@ -1,5 +1,8 @@
 {
     "rust-analyzer.linkedProjects": [
         "app/rustapp/Cargo.toml"
-    ]
+    ],
+    "workbench.editorAssociations": {
+        "*.md": "vscode.markdown.preview.editor"
+    }
 }
