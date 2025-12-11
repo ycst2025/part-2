@@ -66,7 +66,7 @@ $ make run
 
 ## 便利なリンク
 
-- [TOPPERS/ASP3をQEMUで動作させ](https://qiita.com/exshonda/items/bab3921161919feaba6f) - Ubuntu 22.04 LTS上でTOPPERS/ASP3アプリケーションをビルド・実行するための詳細な手順が記載されています。
+- [TOPPERS/ASP3をQEMUで動作させる](https://qiita.com/exshonda/items/bab3921161919feaba6f) - Ubuntu 22.04 LTS上でTOPPERS/ASP3アプリケーションをビルド・実行するための詳細な手順が記載されています。
 
 [1]: https://github.blog/changelog/2022-11-09-codespaces-for-free-and-pro-accounts/
 [2]: https://codespaces.new/ycst2025/part-2?quickstart=1
