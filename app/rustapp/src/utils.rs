@@ -140,7 +140,9 @@ unsafe impl critical_section::Impl for MyCriticalSection {
 /// Create and activate a task, using `f` as the entry point.
 ///
 /// Warning: The created task is never deleted, even after the provided closure
-/// returns. If you call
+/// returns.
+/// If you call this function repeatedly, task IDs will eventually run out, and
+/// this function will panic.
 #[inline]
 pub fn spawn<F>(f: F) -> i32
 where
