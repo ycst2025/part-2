@@ -35,7 +35,7 @@ Cベースの既存プロジェクト・開発プラットフォームでRustを
     
     - [`Cargo.toml`](app/rustapp/Cargo.toml) にパッケージの定義が含まれます。
     
-    - [`main.rs`](app/rustapp/main.rs)/[`lib.rs`](app/rustapp/lib.rs) がルートソースファイルです。
+    - [`main.rs`](app/rustapp/src/main.rs)/[`lib.rs`](app/rustapp/src/lib.rs) がルートソースファイルです。
 
 ## はじめに
 
