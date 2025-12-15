@@ -46,6 +46,8 @@ extern "C" fn rust_task(_: usize) {
 
 unsafe extern "C" {
     fn acre_flg(pk_cflg: *const T_CFLG) -> ER_ID;
+    fn set_flg(flgid: ID, setptn: FLGPTN) -> ER;
+    fn wai_flg(flgid: ID, waiptn: FLGPTN, wfmode: MODE, p_flgptn: *mut FLGPTN) -> ER;
 }
 
 #[repr(C)]
@@ -57,8 +59,13 @@ struct T_CFLG {
 type int_t = core::ffi::c_int;
 type uint_t = core::ffi::c_uint;
 type ATR = uint_t;
+type MODE = uint_t;
+type ER = int_t;
+type ID = int_t;
 type ER_ID = int_t;
 type FLGPTN = uint_t;
 
 const TA_WMUL: ATR = 0x02;
 const TA_CLR: ATR = 0x04;
+const TWF_ORW: MODE = 0x01;
+const TWF_ANDW: MODE = 0x02;
