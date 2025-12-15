@@ -29,6 +29,19 @@ extern "C" fn rust_task(_: usize) {
         println!("We're inside another task!");
         dbg!(&map[&56]);
     });
+
+    let flg = unsafe {
+        acre_flg(&T_CFLG {
+            flgatr: TA_CLR | TA_WMUL,
+            iflgptn: 0,
+        })
+    };
+
+    // 失敗したらパニック
+    assert!(flg >= 0);
+
+    // イベントフラグIDを出力
+    dbg!(flg);
 }
 
 unsafe extern "C" {
