@@ -8,4 +8,6 @@
 
 extern void	main_task(EXINF exinf);
 
+extern void rust_task(EXINF exinf);
+
 #endif
