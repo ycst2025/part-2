@@ -79,3 +79,21 @@ const TA_WMUL: ATR = 0x02;
 const TA_CLR: ATR = 0x04;
 const TWF_ORW: MODE = 0x01;
 const TWF_ANDW: MODE = 0x02;
+
+#[derive(Debug, Clone, Copy)]
+struct Eventflag {
+    id: ID,
+}
+
+impl Eventflag {
+    fn new(flgatr: ATR, iflgptn: FLGPTN) -> Self {
+        let id = unsafe { acre_flg(&T_CFLG { flgatr, iflgptn }) };
+        assert!(id > 0);
+        Self { id }
+    }
+
+    fn wait(&self, waiptn: FLGPTN, wfmode: MODE, p_flgptn: &mut FLGPTN) {
+        let er = unsafe { wai_flg(self.id, waiptn, wfmode, p_flgptn) };
+        assert!(er == 0);
+    }
+}
