@@ -42,6 +42,16 @@ extern "C" fn rust_task(_: usize) {
 
     // イベントフラグIDを出力
     dbg!(flg);
+
+    spawn(move || {
+        println!("[B] waiting...");
+        let mut x = 0;
+        assert_eq!(unsafe { wai_flg(flg, 1, TWF_ANDW, &mut x) }, 0);
+        println!("[B] flag was set!");
+    });
+
+    println!("[A] setting flag!");
+    assert_eq!(unsafe { set_flg(flg, 1) }, 0);
 }
 
 unsafe extern "C" {
