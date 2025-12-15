@@ -211,6 +211,15 @@ endif
 #
 #  アプリケーションのRust部分に関する定義
 # 
+RUST_TARGET := armv7a-none-eabi
+
+RUSTAPP_DIR := $(APPLDIRS)/rustapp
+RUSTLIB := $(APPLDIRS)/rustapp/target/$(RUST_TARGET)/release/librustapp.a
+
+.PHONY: $(RUSTLIB)
+$(RUSTLIB):
+	cd $(RUSTAPP_DIR) && \
+	cargo build --release --target $(RUST_TARGET)
 
 #
 #  システムサービスに関する定義
@@ -334,13 +343,13 @@ KERNEL_LIB_OBJS = $(KERNEL_ASMOBJS) $(KERNEL_COBJS) $(KERNEL_LCOBJS)
 CFG_OBJS = $(CFG_ASMOBJS) $(CFG_COBJS)
 ALL_OBJS = $(START_OBJS) $(APPL_OBJS) $(SYSSVC_OBJS) $(CFG_OBJS) \
 											$(END_OBJS) $(HIDDEN_OBJS)
-ALL_LIBS = -lkernel $(LIBS)
+ALL_LIBS = $(RUSTLIB) -lkernel $(LIBS)
 ifdef KERNEL_LIB
 	LIBS_DEP = $(KERNEL_LIB)/libkernel.a $(filter %.a,$(LIBS))
 	OBJ_LDFLAGS := $(OBJ_LDFLAGS) -L$(KERNEL_LIB)
 	REALCLEAN_FILES := libkernel.a $(REALCLEAN_FILES)
 else
-	LIBS_DEP = libkernel.a $(filter %.a,$(LIBS))
+	LIBS_DEP = libkernel.a $(filter %.a,$(LIBS)) $(RUSTLIB)
 	OBJ_LDFLAGS := $(OBJ_LDFLAGS) -L.
 endif
 
