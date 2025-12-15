@@ -30,3 +30,22 @@ extern "C" fn rust_task(_: usize) {
         dbg!(&map[&56]);
     });
 }
+
+unsafe extern "C" {
+    fn acre_flg(pk_cflg: *const T_CFLG) -> ER_ID;
+}
+
+#[repr(C)]
+struct T_CFLG {
+    flgatr: ATR,
+    iflgptn: FLGPTN,
+}
+
+type int_t = core::ffi::c_int;
+type uint_t = core::ffi::c_uint;
+type ATR = uint_t;
+type ER_ID = int_t;
+type FLGPTN = uint_t;
+
+const TA_WMUL: ATR = 0x02;
+const TA_CLR: ATR = 0x04;
