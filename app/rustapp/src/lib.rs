@@ -30,28 +30,17 @@ extern "C" fn rust_task(_: usize) {
         dbg!(&map[&56]);
     });
 
-    let flg = unsafe {
-        acre_flg(&T_CFLG {
-            flgatr: TA_CLR | TA_WMUL,
-            iflgptn: 0,
-        })
-    };
-
-    // 失敗したらパニック
-    assert!(flg >= 0);
-
-    // イベントフラグIDを出力
-    dbg!(flg);
+    let flg = dbg!(Eventflag::new(TA_CLR | TA_WMUL, 0));
 
     spawn(move || {
         println!("[B] waiting...");
         let mut x = 0;
-        assert_eq!(unsafe { wai_flg(flg, 1, TWF_ANDW, &mut x) }, 0);
+        flg.wait(1, TWF_ANDW, &mut x);
         println!("[B] flag was set!");
     });
 
     println!("[A] setting flag!");
-    assert_eq!(unsafe { set_flg(flg, 1) }, 0);
+    flg.set(1);
 }
 
 unsafe extern "C" {
