@@ -96,4 +96,9 @@ impl Eventflag {
         let er = unsafe { wai_flg(self.id, waiptn, wfmode, p_flgptn) };
         assert!(er == 0);
     }
+
+    fn set(&self, flgptn: FLGPTN) {
+        let er = unsafe { set_flg(self.id, flgptn) };
+        assert!(er == 0);
+    }
 }
